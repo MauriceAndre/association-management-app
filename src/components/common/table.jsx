@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { Table as SemanticTable } from "semantic-ui-react";
 import _ from "lodash";
 import PropTypes from "prop-types";
+import { excludeKeys } from "../../utils/objectUtils";
 
 class Table extends Component {
   static Cell = SemanticTable.Cell;
 
   renderHeader() {
-    const { columns, onSort } = this.props;
+    const { onSort, columns, sortColumn, sortDirection } = this.props;
 
     return columns.map(({ key, path, sortable, content }) => ({
       key: key || path,
+      sorted: sortColumn === path ? sortDirection : null,
       onClick:
         sortable &&
         function() {
@@ -54,9 +56,12 @@ class Table extends Component {
   }
 
   render() {
-    const props = { ...this.props };
-    delete props.columns;
-    delete props.onSort;
+    const props = excludeKeys(this.props, [
+      "columns",
+      "onSort",
+      "sortColumn",
+      "sortDirection"
+    ]);
 
     return (
       <SemanticTable

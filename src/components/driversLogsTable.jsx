@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import Table from "./common/table";
 import Button from "./common/button";
+import { excludeKeys } from "../utils/objectUtils";
 
 class DriversLogsTable extends Component {
   getColumns() {
@@ -61,7 +62,7 @@ class DriversLogsTable extends Component {
   };
 
   render() {
-    const { data, onSort } = this.props;
+    const props = excludeKeys(this.props, ["onDelete"]);
 
     return (
       <Table
@@ -72,8 +73,7 @@ class DriversLogsTable extends Component {
         definition
         selectable
         columns={this.getColumns()}
-        data={data}
-        onSort={onSort}
+        {...props}
       />
     );
   }

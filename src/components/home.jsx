@@ -6,7 +6,9 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        <Header as="h1">Home</Header>
+        <Header as="h1" textAlign="center">
+          Association Management
+        </Header>
       </Fragment>
     );
   }

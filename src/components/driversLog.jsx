@@ -42,7 +42,7 @@ class DriversLog extends Component {
   };
 
   render() {
-    const { driversLogs } = this.state;
+    const { driversLogs, sortColumn, sortDirection } = this.state;
 
     return (
       <Fragment>
@@ -52,6 +52,8 @@ class DriversLog extends Component {
           onDelete={this.handleDelete}
           onSort={this.handleSort}
           data={driversLogs}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
         />
       </Fragment>
     );

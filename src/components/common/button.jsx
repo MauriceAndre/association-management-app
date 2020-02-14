@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Button as SemanticButton } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { excludeKeys } from "../../utils/objectUtils";
 
 class Button extends Component {
   static Group = SemanticButton.Group;
 
   render() {
-    let { text, to, onClick, ...rest } = this.props;
+    const props = excludeKeys(this.props, ["staticContext"]);
+    let { text, to, onClick, ...rest } = props;
     const originOnClick = onClick || function() {};
 
     if (to) {

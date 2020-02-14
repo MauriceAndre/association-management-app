@@ -1,10 +1,10 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import { Select as SemanticSelect } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 const Select = ({ name, label, placeholder, ...rest }) => {
   return (
-    <Form.Select
+    <SemanticSelect
       id={name}
       name={name}
       label={label}
